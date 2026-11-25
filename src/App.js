@@ -207,7 +207,7 @@ export default function App() {
   const [yearFiles,     setYearFiles]     = useState({});
   const [activeYear,    setActiveYear]    = useState(null);
   const [showAllYears,  setShowAllYears]  = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(() => window.innerWidth >= 768);
 
   // Light / dark mode. Remembers the choice; the first time it follows the computer's setting.
   const [theme, setTheme] = useState(() => {
@@ -306,7 +306,7 @@ export default function App() {
         />
         <div style={{ display: "flex", flex: 1 }}>
           <Sidebar setPage={setPage} currentPage={page} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-          <div style={{ flex: 1, padding: "28px 32px", background: "transparent", minHeight: "100%", overflowY: "auto" }}>
+          <div className="mt-main-content" style={{ flex: 1, padding: "28px 32px", background: "transparent", minHeight: "100%", overflowY: "auto" }}>
             {page === "home"  && <Home  config={config} yearFiles={yearFiles} activeYear={activeYear} showAllYears={showAllYears} setPage={setPage} setPendingSearch={setPendingSearch} />}
             {page === "views" && (
               <Tracker

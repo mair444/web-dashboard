@@ -4,3 +4,54 @@ body {
   font-family: 'Inter', sans-serif !important;
   background-color: #f8fafc;
 }
+
+/* ── Responsive Layout: Phones, Tablets, Laptops & TVs ─────────────────── */
+
+/* Ensure images, SVGs, and charts never overflow their containers */
+img, svg, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make wide data tables swipeable horizontally on phones & tablets */
+table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile Phones (up to 640px) */
+@media (max-width: 640px) {
+  .mt-main-content {
+    padding: 14px 12px !important;
+  }
+
+  /* Allow top QuoteBar items to wrap neatly instead of squishing */
+  div[style*="padding: 8px 28px"] {
+    padding: 8px 12px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  /* Stack multi-column grids into a single readable column */
+  div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Tablets & iPads (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .mt-main-content {
+    padding: 20px 20px !important;
+  }
+}
+
+/* Large Monitors & Smart TVs (1600px and wider) */
+@media (min-width: 1600px) {
+  .mt-main-content {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 36px 48px !important;
+  }
+}
