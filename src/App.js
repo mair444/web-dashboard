@@ -230,7 +230,8 @@ export default function App() {
   const loadMasterListData = useCallback(async () => {
     setDataStatus("loading");
     try {
-      const res = await fetch(`${API_BASE}/api/masterlist`);
+      const url = process.env.NODE_ENV === "production" ? "/last-good.json" : `${API_BASE}/api/masterlist`;
+      const res = await fetch(url);
       const data = await res.json();
 
       if (!res.ok) {
