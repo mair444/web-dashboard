@@ -119,7 +119,7 @@ function QuoteBar({ uploadedYears, activeYear, setActiveYear, showAllYears, setS
   const selectAll  = ()  => { setShowAllYears(true); };
 
   return (
-    <div style={{
+    <div className="mt-quotebar" style={{
       position: "relative", zIndex: 10,
       background: "#ffffff",
       borderBottom: "1px solid #f1f5f9",
@@ -128,7 +128,7 @@ function QuoteBar({ uploadedYears, activeYear, setActiveYear, showAllYears, setS
     }}>
       {/* Year switcher — global, always visible when files loaded */}
       {uploadedYears.length > 0 && (
-        <div style={{ display: "flex", gap: 4, background: "#f7f9fa", borderRadius: 999, padding: 3, border: "1px solid #f1f5f9", flexShrink: 0 }}>
+        <div className="mt-year-switcher" style={{ display: "flex", gap: 4, background: "#f7f9fa", borderRadius: 999, padding: 3, border: "1px solid #f1f5f9", flexShrink: 0 }}>
           {uploadedYears.map(y => (
             <button key={y} onClick={() => selectYear(y)} style={{
               padding: "4px 14px", borderRadius: 999, border: "none", cursor: "pointer",
@@ -153,7 +153,7 @@ function QuoteBar({ uploadedYears, activeYear, setActiveYear, showAllYears, setS
       )}
 
       {/* Quote — centered in remaining space */}
-      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+      <div className="mt-quote-text" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
         <span style={{ fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'Nunito', Arial, sans-serif", fontWeight: 700, color: "#6366f1" }}>✦ today</span>
         <span style={{ fontSize: 12, color: "#94a3b8", fontStyle: "italic", fontFamily: "'Nunito Sans', Arial, sans-serif" }}>"{quote}"</span>
       </div>
@@ -304,9 +304,9 @@ export default function App() {
           theme={theme}
           onToggleTheme={() => setTheme(t => (t === "dark" ? "light" : "dark"))}
         />
-        <div style={{ display: "flex", flex: 1 }}>
+        <div style={{ display: "flex", flex: 1, overflowX: "hidden" }}>
           <Sidebar setPage={setPage} currentPage={page} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-          <div className="mt-main-content" style={{ flex: 1, padding: "28px 32px", background: "transparent", minHeight: "100%", overflowY: "auto" }}>
+          <div className="mt-main-content" style={{ flex: 1, minWidth: 0, padding: "28px 32px", background: "transparent", minHeight: "100%", overflowY: "auto" }}>
             {page === "home"  && <Home  config={config} yearFiles={yearFiles} activeYear={activeYear} showAllYears={showAllYears} setPage={setPage} setPendingSearch={setPendingSearch} />}
             {page === "views" && (
               <Tracker
