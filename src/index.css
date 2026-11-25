@@ -5,45 +5,27 @@ body {
   background-color: #f8fafc;
 }
 
-/* ── Responsive Layout: Phones, Tablets, Laptops & TVs ─────────────────── */
+/* ── Responsive Layout: Zero Horizontal Scroll on Mobile ─────────────────── */
 
-/* Prevent horizontal page overflow on any screen */
 html, body {
-  max-width: 100vw;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
 img, svg, canvas {
-  max-width: 100%;
-  height: auto;
+  max-width: 100% !important;
+  height: auto !important;
 }
 
-/* Make wide data tables swipeable horizontally without breaking layout */
-table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Mobile Phones (up to 640px) */
+/* Mobile Phones ONLY (up to 640px) — zero effect on tablets, laptops, or TVs */
 @media (max-width: 640px) {
-  /* Scale down overall base text slightly */
-  html, body {
-    font-size: 11px !important;
-  }
-
-  /* Compact top header */
+  /* Compact top header bar */
   .mt-quotebar {
-    padding: 6px 10px !important;
+    zoom: 0.8;
+    padding: 8px 10px !important;
     flex-wrap: wrap !important;
     justify-content: space-between !important;
     gap: 6px !important;
-  }
-
-  .mt-quotebar button {
-    padding: 3px 9px !important;
-    font-size: 11px !important;
   }
 
   .mt-quote-text {
@@ -51,81 +33,58 @@ table {
     flex: 1 1 100% !important;
     justify-content: flex-start !important;
     border-top: 1px solid #f1f5f9;
-    padding-top: 5px;
+    padding-top: 6px;
     margin-top: 2px;
-    font-size: 11px !important;
-    line-height: 1.35;
   }
 
+  /* Proportionally shrink all cards, charts, and text to fit phone width */
   .mt-main-content {
+    zoom: 0.65;
     padding: 12px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
-  /* Shrink oversized KPI numbers and page headings */
-  .mt-main-content h1,
-  .mt-main-content div[style*="font-size: 28px"],
-  .mt-main-content div[style*="font-size: 32px"],
-  .mt-main-content div[style*="font-size: 36px"],
-  .mt-main-content span[style*="font-size: 28px"],
-  .mt-main-content span[style*="font-size: 32px"] {
-    font-size: 20px !important;
-    line-height: 1.2 !important;
-  }
-
-  .mt-main-content h2,
-  .mt-main-content div[style*="font-size: 20px"],
-  .mt-main-content div[style*="font-size: 22px"],
-  .mt-main-content div[style*="font-size: 24px"] {
-    font-size: 15px !important;
-    line-height: 1.3 !important;
-  }
-
-  .mt-main-content h3,
-  .mt-main-content div[style*="font-size: 16px"],
-  .mt-main-content div[style*="font-size: 18px"] {
-    font-size: 13px !important;
-  }
-
-  /* Shrink card paddings so visuals have more room */
-  .mt-main-content div[style*="padding: 24px"],
-  .mt-main-content div[style*="padding: 28px"],
-  .mt-main-content div[style*="padding: 20px 24px"] {
-    padding: 12px 12px !important;
-  }
-
-  /* Compact table text and cells */
-  .mt-main-content table th,
-  .mt-main-content table td {
-    padding: 6px 8px !important;
-    font-size: 11px !important;
-    white-space: nowrap;
-  }
-
-  /* Stack multi-column grids and prevent chart overflow */
+  /* Stack side-by-side cards and chart rows vertically so nothing scrolls sideways */
   .mt-main-content div[style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
-    gap: 10px !important;
+    gap: 12px !important;
   }
 
-  .mt-main-content div[style*="min-width"] {
+  .mt-main-content > div > div[style*="display: flex"],
+  .mt-main-content div[style*="gap: 20px"],
+  .mt-main-content div[style*="gap: 24px"] {
+    flex-wrap: wrap !important;
+  }
+
+  /* Force every card and chart container to fit 100% of the phone width */
+  .mt-main-content div {
+    max-width: 100% !important;
     min-width: 0 !important;
-    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  /* Keep charts compact vertically on phone screens */
-  .mt-main-content svg {
-    max-height: 220px !important;
+  /* Shrink tables to fit screen width instead of scrolling horizontally */
+  .mt-main-content table {
+    display: table !important;
+    width: 100% !important;
+    table-layout: fixed !important;
+    overflow-x: visible !important;
+  }
+
+  .mt-main-content th,
+  .mt-main-content td {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    padding: 5px 4px !important;
+    font-size: 10px !important;
   }
 }
 
 /* Tablets & iPads (641px to 1024px) */
 @media (min-width: 641px) and (max-width: 1024px) {
-  .mt-quotebar {
-    padding: 8px 16px !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-  }
-
   .mt-main-content {
     padding: 20px 18px !important;
   }
