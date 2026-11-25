@@ -1,0 +1,16 @@
+[Unit]
+Description=MasterTracker server (CMM contract tracking dashboard)
+After=network.target
+
+[Service]
+# IT: change User, WorkingDirectory and MASTERLIST_FOLDER to match the host.
+User=mastertracker
+WorkingDirectory=/opt/mastertracker/server
+Environment=PORT=4000
+Environment=MASTERLIST_FOLDER=/data/cmm/masterlist
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

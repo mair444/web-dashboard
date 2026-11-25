@@ -1,0 +1,22 @@
+export const dashboardConfig = [
+  {
+    id: 1,
+    type: "kpi",
+    title: "Users",
+    value: 120
+  },
+  {
+    id: 2,
+    type: "kpi",
+    title: "Revenue",
+    value: "$5,000"
+  },
+  {
+    id: 3,
+    type: "chart",
+    chartType: "bar",
+    title: "Sales",
+    data: [10, 20, 30],
+    labels: ["Jan", "Feb", "Mar"]
+  }
+];
